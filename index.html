@@ -119,7 +119,64 @@
         height: 10px;
         margin-right: 5px;
       }
+      .redirect {
+        background-color: #3887be;
+        border-radius: 3px;
+        bottom: 135px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        padding: 10px;
+        position: absolute;
+        right: 10px;
+        z-index: 1;
+		
+      }
 
+      .redirect h4 {
+        margin: 0 0 10px;
+		
+      }
+
+      .redirect p {
+        margin-left: 30px;
+        position: absolute;
+        display: block;
+        top: 0;
+		
+      }
+
+      .redirect div {
+        position: relative;
+		
+      }
+
+      .redirect div span {
+        border-radius: 25%;
+        display: inline-block;
+        margin-right: 5px;
+        opacity: .8;
+        background-color: #fff;
+		
+      }
+
+      #redirect {
+        padding: 10px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+        line-height: 18px;
+        height: 20px;
+        margin-bottom: 480px;
+        width: 100px;
+		
+      }
+
+      .redirect-key {
+        display: inline-block;
+        border-radius: 20%;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+		
+      }
       #menu {
         background: #fff;
         position: absolute;
@@ -161,15 +218,22 @@
       #menu a.active:hover {
         background: #3074a4;
       }
+	  
 
     </style>
 
+ <style>
 
+a {
+text-decoration: none; 
+}
+</style> 
   </head>
 
   <body>
     <nav id="menu"></nav>
-   
+
+} 
   
     <div id="map" class="mapboxgl-map">
       <div class="mapboxgl-missing-css">Missing Mapbox GL JS CSS</div>
@@ -200,9 +264,12 @@
     <div id='legend' class='legend'>
       <h4>Neighborhood Grade</h4>
     </div>
-
+ <div id='redirect' class='redirect'>
+      <h4><a href="https://airtable.com/embed/shr7no1XmwUphquU1?backgroundColor=blue" target="_blank">Offer Here</a></h4>
+    </div>
     <script>
       // define access token
+	  
       mapboxgl.accessToken = 'pk.eyJ1IjoicGFjb3ZlbnRyeSIsImEiOiIzNTUyZmYwOTQyZTMyMWI1N2MwYzMzZmI5N2FhZDc0NCJ9.aICAZyWE3be2qyXy8Bny4w';
       //create map
       var map = new mapboxgl.Map({
