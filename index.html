@@ -10,7 +10,7 @@
 
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js'></script>
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
-    <img src="https://www.dropbox.com/s/pg8i7glhi4s1eyu/new_logo.png?raw=1" alt="logo" height="150" width="211" id="demo">
+    
     <style>
       body {
         margin: 0;
@@ -31,7 +31,7 @@
         font-size: 0.85em;
         margin: 10px;
         text-align: left;
-      }
+		}
 
       .map-overlay {
         position: absolute;
@@ -42,6 +42,7 @@
         font-family: Arial, sans-serif;
         overflow: auto;
         border-radius: 3px;
+		
       }
 
       #map {
@@ -49,13 +50,14 @@
         top: 0;
         bottom: 0;
         width: 100%;
-      }
+	   }
 
       #features {
         top: 0;
         height: auto;
         margin-top: 0px;
         width: auto;
+		
       }
 
       #demo {
@@ -66,7 +68,7 @@
         z-index: 1;
         padding: 0px;
         margin: 0px;
-      }
+		}
 
       .legend {
         background-color: #fff;
@@ -275,11 +277,36 @@ text-decoration: none;
 			console.log('parcellsssss', parcels)
 		  
 		  if (parcels.length > 0) {
+			//const noteArr = parcels[0].properties.Notes.split(" ");
+			//const noOfLines = noteArr.length/9;
+			//const noteString = new Array(noOfLines).map();
+			let noteString = '';
+			parcels[0].properties && parcels[0].properties.Notes && parcels[0].properties.Notes.split(' ').forEach((w, i) => {
+				if (i !== 0 && i % 9 === 0) {
+					noteString += '<br/>';
+				} else {
+					noteString += w + ' ';
+				}
+			}) 
+			 //<img src=' + '"' + parcels[0].properties.Pic_URL_Fi + '"' + ' />'
             document.getElementById('pd').innerHTML =
-              `${parcels[0].properties.Book_Secti ? '<p><em><b>MultiFamily Type:</b>' + parcels[0].properties.Book_Secti : ''}` + 
-			  `${parcels[0].properties.List_Price ? '<p><em><b>Listing Price: $</b>' + parcels[0].properties.List_Price : ''}` +
-			  `${parcels[0].properties.Site_Add ? '<p><em><b>Address: </b>' + parcels[0].properties.Site_Add : ''}` +
-			  `${parcels[0].properties.Photo_URL ? '<p><em>' + parcels[0].properties.Photo_URL : ''}` +	  
+              `${parcels[0].properties.Pic_URL_Fi ? '<p><em>' + parcels[0].properties.Pic_URL_Fi.replace('"”', '"') : ''}`  +	'<br/>' +
+			  `${parcels[0].properties.Listing_Nu ? '<p><em><b>Listing Number:</b>' + parcels[0].properties.Listing_Nu : ''}` + 
+			  `${parcels[0].properties.Site_Addre ? '<p><em><b>Address: </b>' + parcels[0].properties.Site_Addre : ''}` +
+			  `${parcels[0].properties.List_Price ? '<p><em><b>Listing Price: </b>' + parcels[0].properties.List_Price : ''}` +
+			  `${parcels[0].properties.List_Pri_1 ? '<p><em><b>Listing Price/Sqft: </b>' + parcels[0].properties.List_Pri_1 : ''}` +
+			  `${parcels[0].properties._Bedroo_1 ? '<p><em><b>1 Bedroom Units: </b>' + parcels[0].properties._Bedroo_1 : ''}` +
+			  `${parcels[0].properties._Bedroom_ ? '<p><em><b>2 Bedroom Units: </b>' + parcels[0].properties._Bedroom_ : ''}` +
+			  `${parcels[0].properties._Bedroo_2 ? '<p><em><b>3 Bedroom Units: </b>' + parcels[0].properties._Bedroo_2 : ''}` +
+			  `${parcels[0].properties.Total_Unit ? '<p><em><b>Total Units: </b>' + parcels[0].properties.Total_Unit : ''}` +
+			  `${parcels[0].properties.Listing_Of ? '<p><em><b>Listing Office: </b>' + parcels[0].properties.Listing_Of : ''}` +
+			  `${parcels[0].properties.Listing_Me  ? '<p><em><b>Listing Member: </b>' + parcels[0].properties.Listing_Me : ''}` +
+			  `${parcels[0].properties.Property_C  ? '<p><em><b>Property Class: </b>' + parcels[0].properties.Property_C : ''}` +
+			  `${parcels[0].properties.Hassle_Fac  ? '<p><em><b>Hassle Factor: </b>' + parcels[0].properties.Hassle_Fac : ''}` +
+			  `${parcels[0].properties.Cost_Per_D  ? '<p><em><b>Cost Per Door: </b>' + parcels[0].properties.Cost_Per_D : ''}` +
+			  `${parcels[0].properties.Cash_on_Ca  ? '<p><em><b>Cash on Cash (Leveraged): </b>' + parcels[0].properties.Cash_on_Ca : ''}` +
+			  `${parcels[0].properties.Cash_on_1  ? '<p><em><b>Cash on Cash (Cash): </b>' + parcels[0].properties.Cash_on_1 : ''}` +
+			  `${parcels[0].properties.Notes  ? '<p><em><b>Notes: </b>' + noteString : ''}` +
 			  `${parcels[0].properties.Desc_link ? '<p><em>' + parcels[0].properties.Desc_link : ''}` +
 			  "</em></p>";
           } else {
