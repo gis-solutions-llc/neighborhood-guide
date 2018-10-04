@@ -76,7 +76,7 @@
         border-radius: 3px;
         bottom: 80px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        font: 12px/20px Calibri;
         padding: 10px;
         position: absolute;
         right: 10px;
@@ -110,9 +110,10 @@
         padding: 10px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
         line-height: 18px;
-        height: 300px;
+        height: 350px;
         margin-bottom: 40px;
         width: 100px;
+		font: Calibri
       }
 
       .legend-key {
@@ -126,7 +127,7 @@
         background-color: #3887be;
         border-radius: 3px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        font: 12px/20px Calibri;
         padding: 10px;
 		#padding-left: 40px;
         position: absolute;
@@ -137,7 +138,8 @@
 		color: white;
 		width: 120px;
 		height: 40px;
-      }
+      
+	  }
 	  
       #menu {
         background: #fff;
@@ -148,7 +150,7 @@
         border-radius: 3px;
         width: 120px;
         border: 1px solid rgba(0, 0, 0, 0.4);
-        font-family: 'Open Sans', sans-serif;
+        font-family: Calibri;
       }
 
       #menu a {
@@ -195,7 +197,10 @@ text-decoration: none;
     <nav id="menu"></nav>
     <div id="map" class="mapboxgl-map">
       <div class="mapboxgl-missing-css">Missing Mapbox GL JS CSS</div>
-      <div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate"><canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" width="150" height="831" style="position: absolute; width: 150px; height: 831px; cursor: default;"></canvas></div>
+      <div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate">
+		  <canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" width="150" height="831" style="position: absolute; width: 150px; height: 831px; cursor: default;">
+		  </canvas>
+	  </div>
       <div class="mapboxgl-control-container">
         <div class="mapboxgl-ctrl-top-left"></div>
         <div class="mapboxgl-ctrl-top-right"></div>
@@ -220,15 +225,15 @@ text-decoration: none;
 	</div>
 	
     <div id='legend' class='legend'>
-      <h4>Neighborhood Grade</h4>
+      <h3 style="font-family:calibri;">Neighborhood Grade</h3>
     </div>
 	
 	<div>
 		<input class="redirect" type="button" onClick="parent.location='https://airtable.com/embed/shr7no1XmwUphquU1?backgroundColor=blue'" value="Offer Here" formtarget="_blank"/>
-     <!-- <h4><a <div id='redirect' class='redirect'> href="https://airtable.com/embed/shr7no1XmwUphquU1?backgroundColor=blue" target="_blank">Offer Here</a></h4> -->
     </div>
 	
     <script>
+	let showFeatureInfo, toggleCheck = false;
       // define access token
 	  
       mapboxgl.accessToken = 'pk.eyJ1IjoicGFjb3ZlbnRyeSIsImEiOiIzNTUyZmYwOTQyZTMyMWI1N2MwYzMzZmI5N2FhZDc0NCJ9.aICAZyWE3be2qyXy8Bny4w';
@@ -240,19 +245,18 @@ text-decoration: none;
       // wait for map to load before adjusting it
       map.on('load', function() {
       
+	  //icon I want to use - https://www.dropbox.com/s/dcm9f7t8hkotuge/active_listing_icon.svg?dl=0
 
         // make a pointer cursor
-        map.getCanvas().style.cursor = 'default';
+        // map.getCanvas().style.cursor = 'default';
         // set map bounds to the continental US
         map.fitBounds([
           [-78.857716, 33.7113756],
           [-98.857716, 53.7113756]
         ]);
-        // make a pointer cursor
-        map.getCanvas().style.cursor = 'default';
         // define layer names
-        var layers = ['A+', 'A', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', '<h4>MultiFamily Listings</h4>', 'Active Listing'];
-        var colors = ['#295927', '#1B9842', '#98D265', '#C6E788', '#EBF7AB', '#FFEDAD', '#FECA81', '#F99E58', '#E85A3B', '#fff', '#A81010'];
+        var layers = ['A+', 'A', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', '<h3 style="font-family:calibri;">MultiFamily Listings</h3>','<img src="https://www.dropbox.com/s/4svklnx5v8i5u9f/Paomedia-Small-N-Flat-Map-marker_rev.svg?raw=1" size=1600x1200&size_mode=3 size=1600x1200&size_mode=3" width="20px" height="20px"></img> Active Listing'];
+        var colors = ['#295927', '#1B9842', '#98D265', '#C6E788', '#EBF7AB', '#FFEDAD', '#FECA81', '#F99E58', '#E85A3B', '#fff', '#fff'];  
         // create legend
         for (i = 0; i < layers.length; i++) {
           var layer = layers[i];
@@ -269,26 +273,22 @@ text-decoration: none;
         }
         // change info window on hover
 		
-        map.on('mousemove', function(e) {
+       
+		
+		showFeatureInfo = function(e) {
 		var parcels = map.queryRenderedFeatures(e.point, {
             layers: ['Active Listings' , 'Neighborhoods']
           });
-			
-			console.log('parcellsssss', parcels)
 		  
 		  if (parcels.length > 0) {
-			//const noteArr = parcels[0].properties.Notes.split(" ");
-			//const noOfLines = noteArr.length/9;
-			//const noteString = new Array(noOfLines).map();
 			let noteString = '';
 			parcels[0].properties && parcels[0].properties.Notes && parcels[0].properties.Notes.split(' ').forEach((w, i) => {
-				if (i !== 0 && i % 11 === 0) {
-					noteString += '<br/>';
+				if (i !== 0 && i % 6 === 0) {
+					noteString += w + '<br/>';
 				} else {
 					noteString += w + ' ';
 				}
 			}) 
-			 //<img src=' + '"' + parcels[0].properties.Pic_URL_Fi + '"' + ' />'
             document.getElementById('pd').innerHTML =
               `${parcels[0].properties.Pic_URL_Fi ? '<p>' + parcels[0].properties.Pic_URL_Fi.replace('"”', '"') : ''}`  +	'<br/>' +
 			  `${parcels[0].properties.Listing_Nu ? '<p><b>Listing Number:</b>' + parcels[0].properties.Listing_Nu : ''}` + 
@@ -307,13 +307,18 @@ text-decoration: none;
 			  `${parcels[0].properties.Cash_on_Ca  ? '<p><b>Cash on Cash (Leveraged): </b>' + parcels[0].properties.Cash_on_Ca : ''}` +
 			  `${parcels[0].properties.Cash_on_1  ? '<p><b>Cash on Cash (Cash): </b>' + parcels[0].properties.Cash_on_1 : ''}` +
 			  `${parcels[0].properties.Notes  ? '<p><b>Notes: </b>' + noteString : ''}` +
-			  `${parcels[0].properties.Desc_link ? '<p>' + parcels[0].properties.Desc_link : ''}` +
+			  `${parcels[0].properties.Add_info  ? '<p><b><h1><form>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button formaction="https://airtable.com/shrpbrMWbexieHQrJ">Additional Info </button></form></b></h1></a>' + parcels[0].properties.Add_info : ''}` +
+			   //`${parcels[0].properties.Add_info  ? '<p><b><h1><a href="https://airtable.com/shrpbrMWbexieHQrJ">Additional Info </b></h1></a>' + parcels[0].properties.Add_info : ''}` +
+			   `${parcels[0].properties.Desc_link ? '<p>' + parcels[0].properties.Desc_link : ''}` +
 			  "</p>";
           } else {
             document.getElementById('pd').innerHTML = '<p>Hover over a neighborhood</p>';
-           }
-		             		  
-		 });
+           }           		  
+		 }
+		 
+		map.on('mousemove', showFeatureInfo);
+		 
+		
       });
 	  
  
@@ -332,6 +337,31 @@ text-decoration: none;
           var clickedLayer = this.textContent;
           e.preventDefault();
           e.stopPropagation();
+		  
+		const features =  map.querySourceFeatures('composite', {
+		sourceLayer : "Active_Listings_final-8crx9l"
+		});
+		
+		features.forEach(marker => {
+			var el = document.createElement('div');
+			el.style.backgroundImage = "url(https://www.iconsdb.com/icons/preview/soylent-red/map-marker-2-xxl.png)";
+			el.style.width = '20px';
+			el.style.height = '20px';
+			
+			el.addEventListener('click', function(){
+				toggleCheck = !toggleCheck
+				if (toggleCheck) {
+					map.off('mousemove', showFeatureInfo)
+				} else {
+					map.on('mousemove', showFeatureInfo)
+				}
+			});
+
+			// add marker to map
+			new mapboxgl.Marker(el)
+				.setLngLat(marker.geometry.coordinates)
+				.addTo(map);
+		});		  
 
           var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
 
