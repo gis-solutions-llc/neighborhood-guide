@@ -123,23 +123,36 @@
         height: 10px;
         margin-right: 5px;
       }
+	  
       .redirect {
         background-color: #3887be;
         border-radius: 3px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         font: 12px/20px Calibri;
-        padding: 10px;
-		#padding-left: 40px;
+		padding: 10px;
         position: absolute;
         right: 10px;
 		top: 100px;
         z-index: 1;
 		text-align:center;
 		color: white;
-		width: 120px;
-		height: 40px;
-      
+		width: 100px;
 	  }
+	  
+      .add-info {
+        background-color: #3887be;
+        border-radius: 3px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        font: 12px/20px Calibri;
+		padding: 10px;
+        position: absolute;
+        right: 80px;
+		bottom: 80px;
+        z-index: 1;
+		text-align:center;
+		color: white;
+		width: 100px;
+	  }	  
 	  
       #menu {
         background: #fff;
@@ -268,7 +281,7 @@ text-decoration: none;
     </div>
 	
 	<div>
-		<input class="redirect" type="button" onClick="parent.location='https://airtable.com/embed/shr7no1XmwUphquU1?backgroundColor=blue'" value="Offer Here" formtarget="_blank"/>
+		<a class="redirect" type="button" href='https://airtable.com/embed/shr7no1XmwUphquU1?backgroundColor=blue' target="_blank">Offer Here</a>
     </div>
 	
     <script>
@@ -346,8 +359,9 @@ text-decoration: none;
 			  `${parcels[0].properties.Cash_on_Ca  ? '<p><b>Cash on Cash (Leveraged): </b>' + parcels[0].properties.Cash_on_Ca : ''}` +
 			  `${parcels[0].properties.Cash_on_1  ? '<p><b>Cash on Cash (Cash): </b>' + parcels[0].properties.Cash_on_1 : ''}` +
 			  `${parcels[0].properties.Notes  ? '<p><b>Notes: </b>' + noteString : ''}` +
-			  `${parcels[0].properties.Add_info  ? '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://airtable.com/shrpbrMWbexieHQrJ" class="classname">Additional Info</a></b>' + parcels[0].properties.Add_info : ''}` +
-			   `${parcels[0].properties.Desc_link ? '<p>' + parcels[0].properties.Desc_link : ''}` +
+			  `${parcels[0].properties.Add_info  ? '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a type="button" target="_blank" href="https://airtable.com/shrpbrMWbexieHQrJ" class="add-info">Additional Info</a></b>' + parcels[0].properties.Add_info : ''}` +
+			   
+			  `${parcels[0].properties.Desc_link ? '<p>' + parcels[0].properties.Desc_link : ''}` +
 			  "</p>";
           } else {
             document.getElementById('pd').innerHTML = '<p>Hover over a neighborhood</p>';
