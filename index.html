@@ -146,7 +146,7 @@
         font: 12px/20px Calibri;
 		padding: 10px;
         position: absolute;
-        right: 80px;
+        right: 160px;
 		bottom: 60px;
         z-index: 1;
 		text-align:center;
@@ -197,42 +197,7 @@
       }
 	  
 	 
-.classname {
-	-moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
-	box-shadow:inset 0px 1px 0px 0px #97c4fe;
-	background-color:#3887be;
-	-webkit-border-top-left-radius:20px;
-	-moz-border-radius-topleft:20px;
-	border-top-left-radius:20px;
-	-webkit-border-top-right-radius:20px;
-	-moz-border-radius-topright:20px;
-	border-top-right-radius:20px;
-	-webkit-border-bottom-right-radius:20px;
-	-moz-border-radius-bottomright:20px;
-	border-bottom-right-radius:20px;
-	-webkit-border-bottom-left-radius:20px;
-	-moz-border-radius-bottomleft:20px;
-	border-bottom-left-radius:20px;
-text-indent:0;
-	border:1px solid #337fed;
-	display:inline-block;
-	color:#ffffff;
-	font-family:Calibri;
-	font-size:15px;
-	font-weight:bold;
-	font-style:normal;
-height:65px;
-	line-height:65px;
-width:131px;
-	text-decoration:none;
-	text-align:center;
-	text-shadow:1px 1px 0px #1570cd;
-}.classname:hover {
-	background-color:#1e62d0;
-}.classname:active {
-	position:relative;
-	top:1px;
+
 }</style>
 	  
 	    </style>
@@ -359,7 +324,7 @@ text-decoration: none;
 			  `${parcels[0].properties.Cash_on_Ca  ? '<p><b>Cash on Cash (Leveraged): </b>' + parcels[0].properties.Cash_on_Ca : ''}` +
 			  `${parcels[0].properties.Cash_on_1  ? '<p><b>Cash on Cash (Cash): </b>' + parcels[0].properties.Cash_on_1 : ''}` +
 			  `${parcels[0].properties.Notes  ? '<p><b>Notes: </b>' + noteString : ''}` +
-			  `${parcels[0].properties.Add_info  ? '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;<a type="button" target="_blank" href="https://airtable.com/shrpbrMWbexieHQrJ" class="add-info">Additional Info</a></b>' + parcels[0].properties.Add_info : ''}` +
+			  `${parcels[0].properties.Add_info  ? '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a type="button" target="_blank" href="https://airtable.com/shrpbrMWbexieHQrJ" class="add-info">Additional Info</a></b>' + parcels[0].properties.Add_info : ''}` +
 			   
 			  `${parcels[0].properties.Desc_link ? '<p>' + parcels[0].properties.Desc_link : ''}` +
 			  "</p>";
