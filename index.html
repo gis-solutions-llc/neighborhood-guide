@@ -147,7 +147,7 @@
 		padding: 10px;
         position: absolute;
         right: 80px;
-		bottom: 80px;
+		bottom: 60px;
         z-index: 1;
 		text-align:center;
 		color: white;
@@ -335,7 +335,7 @@ text-decoration: none;
 		  if (parcels.length > 0) {
 			let noteString = '';
 			parcels[0].properties && parcels[0].properties.Notes && parcels[0].properties.Notes.split(' ').forEach((w, i) => {
-				if (i !== 0 && i % 6 === 0) {
+				if (i !== 0 && i % 7 === 0) {
 					noteString += w + '<br/>';
 				} else {
 					noteString += w + ' ';
@@ -359,7 +359,7 @@ text-decoration: none;
 			  `${parcels[0].properties.Cash_on_Ca  ? '<p><b>Cash on Cash (Leveraged): </b>' + parcels[0].properties.Cash_on_Ca : ''}` +
 			  `${parcels[0].properties.Cash_on_1  ? '<p><b>Cash on Cash (Cash): </b>' + parcels[0].properties.Cash_on_1 : ''}` +
 			  `${parcels[0].properties.Notes  ? '<p><b>Notes: </b>' + noteString : ''}` +
-			  `${parcels[0].properties.Add_info  ? '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a type="button" target="_blank" href="https://airtable.com/shrpbrMWbexieHQrJ" class="add-info">Additional Info</a></b>' + parcels[0].properties.Add_info : ''}` +
+			  `${parcels[0].properties.Add_info  ? '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;<a type="button" target="_blank" href="https://airtable.com/shrpbrMWbexieHQrJ" class="add-info">Additional Info</a></b>' + parcels[0].properties.Add_info : ''}` +
 			   
 			  `${parcels[0].properties.Desc_link ? '<p>' + parcels[0].properties.Desc_link : ''}` +
 			  "</p>";
