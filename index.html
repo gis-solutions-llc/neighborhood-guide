@@ -253,16 +253,16 @@ text-decoration: none;
 	let showFeatureInfo, toggleCheck = false;
       // define access token
 	  
-      mapboxgl.accessToken = 'pk.eyJ1IjoicGFjb3ZlbnRyeSIsImEiOiIzNTUyZmYwOTQyZTMyMWI1N2MwYzMzZmI5N2FhZDc0NCJ9.aICAZyWE3be2qyXy8Bny4w';
+      mapboxgl.accessToken = 'pk.eyJ1IjoiaW52ZXN0aHlwb3RoZXRpY2FsIiwiYSI6ImNqbjBucGl0bTAxcmkzcG5nZzRtdnVyanIifQ.aLtDerXz9Zd5qrZppRMNrg';
       //create map
       var map = new mapboxgl.Map({
         container: 'map', // container id
-        style: 'mapbox://styles/pacoventry/cjllme8j04hr12rnxhx2f448w' // map style URL from Mapbox Studio
+        style: 'mapbox://styles/investhypothetical/cjn0o2j6r3yx92smt7rtm82lj' // map style URL from Mapbox Studio
       });
       // wait for map to load before adjusting it
       map.on('load', function() {
       
-	  //icon I want to use - https://www.dropbox.com/s/dcm9f7t8hkotuge/active_listing_icon.svg?dl=0
+	  
 
         // make a pointer cursor
         // map.getCanvas().style.cursor = 'default';
@@ -356,7 +356,7 @@ text-decoration: none;
           e.stopPropagation();
 		  
 		const features =  map.querySourceFeatures('composite', {
-		sourceLayer : "Active_Listings_final-8crx9l"
+		sourceLayer : "Active_Listings_20181005-5nlvw1"
 		});
 		
 		features.forEach(marker => {
