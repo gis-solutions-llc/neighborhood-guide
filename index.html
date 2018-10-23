@@ -308,25 +308,19 @@ text-decoration: none;
 			}) 
             document.getElementById('pd').innerHTML =
               `${parcels[0].properties.Pic_URL_Fi ? '<p>' + parcels[0].properties.Pic_URL_Fi.replace('"”', '"') : ''}`  +	'<br/>' +
-			  `${parcels[0].properties.Listing_Nu ? '<p><b>Listing Number:</b>' + parcels[0].properties.Listing_Nu : ''}` + 
-			  `${parcels[0].properties.Site_Addre ? '<p><b>Address: </b>' + parcels[0].properties.Site_Addre : ''}` +
-			  `${parcels[0].properties.List_Price ? '<p><b>Listing Price: </b>' + parcels[0].properties.List_Price : ''}` +
-			  `${parcels[0].properties.List_Pri_1 ? '<p><b>Listing Price/Sqft: </b>' + parcels[0].properties.List_Pri_1 : ''}` +
-			  `${parcels[0].properties._Bedroo_1 ? '<p><b>1 Bedroom Units: </b>' + parcels[0].properties._Bedroo_1 : ''}` +
-			  `${parcels[0].properties._Bedroom_ ? '<p><b>2 Bedroom Units: </b>' + parcels[0].properties._Bedroom_ : ''}` +
-			  `${parcels[0].properties._Bedroo_2 ? '<p><b>3 Bedroom Units: </b>' + parcels[0].properties._Bedroo_2 : ''}` +
-			  `${parcels[0].properties.Total_Unit ? '<p><b>Total Units: </b>' + parcels[0].properties.Total_Unit : ''}` +
-			  `${parcels[0].properties.Listing_Of ? '<p><b>Listing Office: </b>' + parcels[0].properties.Listing_Of : ''}` +
-			  `${parcels[0].properties.Listing_Me  ? '<p><b>Listing Member: </b>' + parcels[0].properties.Listing_Me : ''}` +
+			  `${parcels[0].properties.Cash_on_Ca  ? '<p><b>Cash on Cash (Leveraged): </b>' + parcels[0].properties.Cash_on_Ca : ''}` +
+			  `${parcels[0].properties.Cash_on__1  ? '<p><b>Cash on Cash (Cash): </b>' + parcels[0].properties.Cash_on__1 : ''}` +
 			  `${parcels[0].properties.Property_C  ? '<p><b>Property Class: </b>' + parcels[0].properties.Property_C : ''}` +
 			  `${parcels[0].properties.Hassle_Fac  ? '<p><b>Hassle Factor: </b>' + parcels[0].properties.Hassle_Fac : ''}` +
-			  `${parcels[0].properties.Cost_Per_D  ? '<p><b>Cost Per Door: </b>' + parcels[0].properties.Cost_Per_D : ''}` +
-			  `${parcels[0].properties.Cash_on_Ca  ? '<p><b>Cash on Cash (Leveraged): </b>' + parcels[0].properties.Cash_on_Ca : ''}` +
-			  `${parcels[0].properties.Cash_on_1  ? '<p><b>Cash on Cash (Cash): </b>' + parcels[0].properties.Cash_on_1 : ''}` +
+			  `${parcels[0].properties.Total_Unit ? '<p><b>Total Units: </b>' + parcels[0].properties.Total_Unit : ''}` +
+			  `${parcels[0].properties.List_Price ? '<p><b>Listing Price: </b>' + parcels[0].properties.List_Price : ''}` +
+			  `${parcels[0].properties.Site_Addre ? '<p><b>Address: </b>' + parcels[0].properties.Site_Addre : ''}` +
+			  `${parcels[0].properties.List_Pri_1 ? '<p><b>Listing Price/Sqft: </b>' + parcels[0].properties.List_Pri_1 : ''}` +
 			  `${parcels[0].properties.Notes  ? '<p><b>Notes: </b>' + noteString : ''}` +
-			  `${parcels[0].properties.Add_info  ? '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a type="button" target="_blank" href="https://airtable.com/shrpbrMWbexieHQrJ" class="add-info">Additional Info</a></b>' + parcels[0].properties.Add_info : ''}` +
-			   
+			  `${parcels[0].properties.Listing_Me  ? '<p><b>Listing Member: </b>' + parcels[0].properties.Listing_Me : ''}` +
+			  `${parcels[0].properties.Listing_Of ? '<p><b>Listing Office: </b>' + parcels[0].properties.Listing_Of : ''}` +
 			  `${parcels[0].properties.Desc_link ? '<p>' + parcels[0].properties.Desc_link : ''}` +
+			  `${parcels[0].properties.Add_info  ? '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a type="button" target="_blank" href="https://airtable.com/shrpbrMWbexieHQrJ" class="add-info">Additional Info</a></b>' + parcels[0].properties.Add_info : ''}` +
 			  "</p>";
           } else {
             document.getElementById('pd').innerHTML = '<p>Hover over a neighborhood</p>';
