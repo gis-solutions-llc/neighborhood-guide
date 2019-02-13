@@ -73,7 +73,7 @@
       .legend {
         background-color: #fff;
         border-radius: 3px;
-        bottom: 80px;
+        bottom: 250px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         font: 12px/20px Calibri;
         padding: 10px;
@@ -109,7 +109,7 @@
         padding: 10px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
         line-height: 18px;
-        height: 350px;
+        height: 225px;
         margin-bottom: 40px;
         width: 100px;
 		font: Calibri
@@ -153,49 +153,7 @@
 		width: 100px;
 	  }	  
 	  
-      #menu {
-        background: #fff;
-        position: absolute;
-        z-index: 1;
-        top: 60px;
-        right: 10px;
-        border-radius: 3px;
-        width: 120px;
-        border: 1px solid rgba(0, 0, 0, 0.4);
-        font-family: Calibri;
-      }
 
-      #menu a {
-        font-size: 13px;
-        color: #404040;
-        display: block;
-        margin: 0;
-        padding: 0;
-        padding: 10px;
-        text-decoration: none;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-        text-align: center;
-      }
-
-      #menu a:last-child {
-        border: none;
-      }
-
-      #menu a:hover {
-        background-color: #f8f8f8;
-        color: #404040;
-      }
-
-      #menu a.active {
-        background-color: #3887be;
-        color: #ffffff;
-      }
-
-      #menu a.active:hover {
-        background: #3074a4;
-      }
-	  
-	 
 
 }</style>
 	  
@@ -210,7 +168,7 @@ text-decoration: none;
   </head>
 
   <body>
-    <nav id="menu"></nav>
+    
     <div id="map" class="mapboxgl-map">
       <div class="mapboxgl-missing-css">Missing Mapbox GL JS CSS</div>
       <div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate">
@@ -244,10 +202,7 @@ text-decoration: none;
       <h3 style="font-family:calibri;">Neighborhood Grade</h3>
     </div>
 	
-	<div>
-		<a class="redirect" type="button" href='https://airtable.com/embed/shr7no1XmwUphquU1?backgroundColor=blue' target="_blank">Offer Here</a>
-    </div>
-	
+		
     <script>
 	let showFeatureInfo, toggleCheck = false;
       // define access token
@@ -271,7 +226,7 @@ text-decoration: none;
           [-98.857716, 53.7113756]
         ]);
         // define layer names
-        var layers = ['A+', 'A', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', '<h3 style="font-family:calibri;">MultiFamily Listings</h3>','<img src="https://www.dropbox.com/s/4svklnx5v8i5u9f/Paomedia-Small-N-Flat-Map-marker_rev.svg?raw=1" size=1600x1200&size_mode=3 size=1600x1200&size_mode=3" width="20px" height="20px"></img> Active Listing'];
+        var layers = ['A+', 'A', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D'];
         var colors = ['#295927', '#1B9842', '#98D265', '#C6E788', '#EBF7AB', '#FFEDAD', '#FECA81', '#F99E58', '#E85A3B', '#fff', '#fff'];  
         // create legend
         for (i = 0; i < layers.length; i++) {
@@ -306,19 +261,7 @@ text-decoration: none;
 				}
 			}) 
             document.getElementById('pd').innerHTML =
-              `${parcels[0].properties.Pic_URL_Fi ? '<p>' + parcels[0].properties.Pic_URL_Fi.replace('"”', '"') : ''}`  +	'<br/>' +
-			  `${parcels[0].properties.Cash_on_Ca  ? '<p><b>Cash on Cash (Leveraged): </b>' + parcels[0].properties.Cash_on_Ca : ''}` +
-			  `${parcels[0].properties.Cash_on__1  ? '<p><b>Cash on Cash (Cash): </b>' + parcels[0].properties.Cash_on__1 : ''}` +
-			  `${parcels[0].properties.Property_C  ? '<p><b>Property Class: </b>' + parcels[0].properties.Property_C : ''}` +
-			  `${parcels[0].properties.Hassle_Fac  ? '<p><b>Hassle Factor: </b>' + parcels[0].properties.Hassle_Fac : ''}` +
-			  `${parcels[0].properties.Total_Unit ? '<p><b>Total Units: </b>' + parcels[0].properties.Total_Unit : ''}` +
-			  `${parcels[0].properties.List_Price ? '<p><b>Listing Price: </b>' + parcels[0].properties.List_Price : ''}` +
-			  `${parcels[0].properties.Site_Addre ? '<p><b>Address: </b>' + parcels[0].properties.Site_Addre : ''}` +
-			  `${parcels[0].properties.List_Pri_1 ? '<p><b>Listing Price/Sqft: </b>' + parcels[0].properties.List_Pri_1 : ''}` +
-			  `${parcels[0].properties.Notes  ? '<p><b>Notes: </b>' + noteString : ''}` +
-			  `${parcels[0].properties.Listing_Me  ? '<p><b>Listing Member: </b>' + parcels[0].properties.Listing_Me : ''}` +
-			  `${parcels[0].properties.Listing_Of ? '<p><b>Listing Office: </b>' + parcels[0].properties.Listing_Of : ''}` +
-			  `${parcels[0].properties.Add_info  ? '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a type="button" target="_blank" href="https://airtable.com/shrpbrMWbexieHQrJ" class="add-info">Additional Info</a></b>' + parcels[0].properties.Add_info : ''}` +
+   		   
 			  `${parcels[0].properties.Desc_link ? '<p>' + parcels[0].properties.Desc_link : ''}` +
 			  "</p>";
           } else {
@@ -333,7 +276,7 @@ text-decoration: none;
 	  
  
 	// change info window on hover
-      var toggleableLayerIds = ['Active Listings'];
+      //var toggleableLayerIds = ['Active Listings'];
 
       for (var i = 0; i < toggleableLayerIds.length; i++) {
         var id = toggleableLayerIds[i];
